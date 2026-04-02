@@ -1,0 +1,1439 @@
+/* ============================================================
+   COWI — Child Of Wealth Initiative
+   Main Stylesheet (style.css)
+
+   HOW THIS FILE IS ORGANIZED:
+   1. Google Font imports
+   2. Animation definitions
+   3. CSS Variables (reusable colour/value names)
+   4. CSS Reset (removes default browser styles)
+   5. Base styles (html, body, links)
+   6. Navbar (desktop)
+   7. Sidebar navbar (mobile)
+   8. Hero section
+   9. Stats bar
+   10. About section
+   11. Causes section
+   12. Programs & Initiatives section
+   13. Team section
+   14. Stories section
+   15. Contact section
+   16. Footer
+   17. Shared / utility styles
+   18. Large screen overrides
+   ============================================================ */
+
+/* ============================================================
+   1. GOOGLE FONTS
+   We're loading two fonts from Google Fonts:
+   - "Mulish" — clean, modern font for body text
+   - "Iosevka Charon Mono" — monospace font (not used heavily but available)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+/* ============================================================
+   2. ANIMATIONS
+   "Keyframes" define what an animation looks like step by step.
+   We define the same animation twice:
+   - @-webkit-keyframes → for older Safari/Chrome
+   - @keyframes        → the standard version
+   ============================================================ */
+
+/* fade-in: starts invisible (opacity 0) and becomes fully visible (opacity 1) */
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* slide-up: for cards and sections appearing from below */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The .fade-in class applies the fade-in animation to any element */
+.fade-in {
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+/* Staggered delays — each child animates a bit after the previous one */
+.fade-in:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.fade-in:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.fade-in:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* ============================================================
+   3. CSS VARIABLES
+   These are like named shortcuts for values we use over and over.
+   Instead of typing "#d27315" every time, we just write var(--ochre).
+   ============================================================ */
+:root {
+  --white-text: #fff;
+  --ochre: #d27315; /* Brand orange-brown colour */
+  --ochre-dark: #b05e0e; /* Darker version for hover states */
+  --black-text: #111;
+  --grey-text: #555;
+  --light-grey: #f7f5f2; /* Very light background colour */
+  --glass: #ffffff7e; /* Semi-transparent white (glass effect) */
+  --overlay-green: rgba(0, 80, 0, 0.55); /* Dark green overlay on hero image */
+  --green: #008000;
+  --green-light: #21aa26;
+  --green-dark: rgb(5, 86, 5);
+  --border: #e5e0da; /* Light border colour */
+  --transition: 0.3s ease-in-out; /* Smooth transition speed used everywhere */
+  --radius: 12px; /* Border radius for cards and boxes */
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.1); /* Subtle card shadow */
+  --section-pad: 6rem 2rem; /* Top/bottom and left/right padding for sections */
+  --max-width: 1200px; /* Maximum width for content on wide screens */
+}
+
+/* ============================================================
+   4. CSS RESET
+   Browsers add default margins, paddings, and box sizing.
+   We remove them here so we have full control.
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/border are included inside the element's size */
+}
+
+/* ============================================================
+   5. BASE STYLES
+   ============================================================ */
+html {
+  scroll-behavior: smooth; /* Makes clicking anchor links (#about etc.) scroll smoothly */
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Mulish", Arial, Helvetica, sans-serif;
+  color: var(--black-text);
+  background: #fff;
+  line-height: 1.6; /* Space between lines of text */
+}
+
+/* Remove underlines from links and set default colour */
+a {
+  color: var(--black-text);
+  text-decoration: none;
+}
+
+/* Make images fit their containers and never overflow */
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover; /* Image fills its box without stretching */
+}
+
+/* Make buttons look clickable */
+button {
+  cursor: pointer;
+}
+
+/* ============================================================
+   6. NAVBAR — DESKTOP
+   A floating pill-shaped nav bar at the top centre of the screen.
+   "position: fixed" means it stays visible even when you scroll.
+   ============================================================ */
+
+/* Flex utilities reused across navbar and hero */
+.hero-overlay,
+.hero,
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-bar {
+  position: fixed; /* Stays at the top while scrolling */
+  top: 2em;
+  left: 50%; /* Start from the center */
+  z-index: 100; /* Sits on top of all other elements */
+  transform: translateX(
+    -50%
+  ); /* Shift left by half its own width → truly centered */
+  padding: 0 1em;
+  width: clamp(45em, 90vw, 60em); /* Responsive width: min 45em, max 60em */
+  border-radius: 12em; /* Makes it pill-shaped */
+  background-color: var(--glass);
+  backdrop-filter: blur(14px); /* Frosted glass blur behind the navbar */
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+/* The list inside the navbar is displayed in a horizontal row */
+#nav-bar ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: max(0.5em, 1vw);
+  width: 100%;
+  padding: 0.3em 1em;
+  list-style: none; /* Removes bullet points */
+}
+
+#nav-bar li {
+  display: flex;
+}
+
+/* Navbar logo image */
+#nav-bar img {
+  width: clamp(60px, 15vw, 10rem);
+  height: 100%;
+  margin: 0 auto 0 -2em;
+}
+
+/* Navbar link styles */
+#nav-bar ul li a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(0.85em, 1.1vw, 1em);
+  color: var(--black-text);
+  transition: var(--transition);
+}
+
+/* When hovering a nav link, it turns ochre (orange-brown) */
+#nav-bar a:hover {
+  cursor: pointer;
+  color: var(--ochre);
+}
+
+/* The currently active/selected link is ochre */
+.active-link {
+  color: var(--green-light) !important;
+}
+
+/* Hide the hamburger more-icon on desktop */
+#nav-bar ul li:nth-child(9) {
+  display: none;
+}
+
+.nav-bar-btn {
+  font-size: 0.85em;
+  margin: 0 clamp(0, 2%, -2em) 0 auto;
+}
+
+/* ============================================================
+   7. SIDEBAR NAVBAR — MOBILE
+   Slides down from above the screen when the hamburger is tapped.
+   Uses "top: -100%" (hidden above screen) and "top: 2em" (visible).
+   ============================================================ */
+
+/* Hide sidebar on desktop — tablet.css shows it on small screens */
+.sc-nav-bar {
+  display: none;
+}
+
+/* When .show-nav-bar is added by JS, the sidebar slides into view */
+.show-nav-bar {
+  top: 2em !important;
+  transition: var(--transition);
+}
+
+/* Completely hide it when .hide-nav-bar is applied */
+.hide-nav-bar {
+  display: none;
+}
+
+/* Hide the main navbar when sidebar is open */
+.hide {
+  display: none !important;
+}
+
+/* The invisible overlay that covers the rest of the page when sidebar is open */
+.close-overlay-invisble {
+  display: none;
+}
+
+.close-overlay {
+  display: block;
+  position: fixed;
+  inset: 0px; /* Covers the entire screen */
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent dark overlay */
+}
+
+/* The active link in the sidebar */
+.sc-active-link {
+  color: var(--green-light) !important;
+}
+
+/* ============================================================
+   8. HERO SECTION
+   The large full-screen banner at the top with a background image.
+   ============================================================ */
+.hero {
+  position: relative;
+  background-image: url("../Images/hands-together.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Parallax-like fixed background */
+  color: var(--white-text);
+  width: 100vw;
+  min-height: 100vh; /* At least full screen height */
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Dark green overlay on top of the background image */
+.hero-overlay {
+  width: 100%;
+  flex: 1;
+  padding: 10rem 6rem 5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 60, 0, 0.3) 0%,
+    rgba(0, 60, 0, 0.65) 60%,
+    rgba(0, 40, 0, 0.85) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+/* The text content box inside the hero */
+.hero-con {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  max-width: 700px;
+  gap: 1rem;
+}
+
+/* Small tag label above the heading */
+.hero-tag {
+  display: inline-block;
+  background: var(--ochre);
+  color: var(--white-text);
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3em 0.9em;
+  border-radius: 2em;
+}
+
+/* Main hero heading */
+.hero-con h1 {
+  font-size: clamp(2.2em, 5vw, 4em);
+  font-weight: 800;
+  line-height: 1.15;
+  max-width: 12em;
+  color: var(--white-text);
+}
+
+/* Row of buttons inside hero */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* The hero subtitle paragraph */
+.hero-con > p {
+  font-size: clamp(0.95em, 1.5vw, 1.2em);
+  max-width: 40em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================================
+   9. STATS BAR
+   A strip at the bottom of the hero showing key numbers.
+   ============================================================ */
+.stats-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 1.5rem 3rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-item h3 {
+  font-size: clamp(1.5em, 3vw, 2.2em);
+  font-weight: 800;
+  color: var(--green-light);
+}
+
+.stat-item p {
+  font-size: 0.85em;
+  color: var(--grey-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* Thin vertical divider between stats */
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   10. ABOUT SECTION
+   Two-column layout: text on the left, image on the right.
+   ============================================================ */
+/*THIS IS TO FORCE STYLE THE ABOUT PAGE*/
+
+#about-body {
+  background: var(--light-grey);
+}
+
+
+.about-section {
+  margin: 4em auto auto auto;
+  padding: var(--section-pad);
+  background: var(--light-grey);
+}
+
+/* Centers the content and limits its maximum width */
+.about-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.about-text h2 {
+  font-size: clamp(1.6em, 3vw, 2.4em);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* The <em> tag inside h2 becomes coloured */
+.about-text h2 em {
+  color: var(--green);
+  font-style: normal;
+}
+
+.about-text p, ul {
+  color: var(--grey-text);
+  font-size: 1em;
+  line-height: 1.8;
+}
+
+.about-text ul{
+  margin-left: 3em;
+}
+
+.about-btn {
+  align-self: flex-start; /* Don't stretch the button full width */
+  margin-top: 0.5rem;
+}
+
+/* Image container */
+.about-image-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* The actual image */
+.about-img {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  /* Grey gradient placeholder shown if the image file is missing */
+  background: linear-gradient(135deg, #c8c3ba 0%, #a9a49c 100%);
+}
+
+/* Floating badge overlaid on the image */
+.about-badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius);
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: var(--shadow);
+}
+
+.badge-icon {
+  font-size: 1.5em;
+  color: var(--ochre);
+}
+
+.about-badge strong {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.about-badge small {
+  font-size: 0.78em;
+  color: var(--grey-text);
+}
+
+/* ============================================================
+   11. CAUSES SECTION
+   Three cards showing what COWI is working to solve.
+   ============================================================ */
+.causes-section {
+  padding: var(--section-pad);
+  background: #fff;
+}
+
+/* Grid of 3 equal columns */
+.causes-grid {
+  max-width: var(--max-width);
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Each cause card */
+.cause-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+  border: 1px solid var(--border);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+/* Card lifts on hover */
+.cause-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
+}
+
+.cause-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  /* Placeholder gradient if image is missing */
+  background: linear-gradient(135deg, #c8c3ba, #9e9890);
+}
+
+.cause-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Image zooms slightly on card hover */
+.cause-card:hover .cause-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Category label on the image */
+.cause-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 0.3em 0.8em;
+  border-radius: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cause-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cause-body h3 {
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cause-body p {
+  font-size: 0.88em;
+  color: var(--grey-text);
+  line-height: 1.7;
+}
+
+/* Progress bar container */
+.progress-wrap {
+  margin-top: 0.3rem;
+}
+
+/* The grey track behind the progress */
+.progress-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+/* The coloured fill showing how much has been raised */
+.progress-fill {
+  height: 100%;
+  background: var(--green-light);
+  border-radius: 99px;
+  transition: width 1s ease;
+}
+
+/* Row showing "Raised" and "Goal" labels */
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78em;
+  color: var(--grey-text);
+  margin-top: 0.4rem;
+  font-weight: 600;
+}
+
+.cause-btn {
+  align-self: flex-start;
+  font-size: 0.85em;
+  margin-top: 0.3rem;
+}
+
+/* ============================================================
+   12. PROGRAMS & INITIATIVES SECTION
+   Three cards inspired by ideatafrica.com showing events/programs.
+   ============================================================ */
+.programs-section {
+  padding: var(--section-pad);
+  background: var(--light-grey);
+}
+
+.programs-grid {
+  max-width: var(--max-width);
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.program-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.13);
+}
+
+.program-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  /* Placeholder gradient if image is missing */
+  background: linear-gradient(135deg, #b5b0a8, #8a8880);
+}
+
+.program-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.program-card:hover .program-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Date badge on top-right of the image */
+.program-date-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.4em 0.7em;
+  text-align: center;
+  line-height: 1;
+}
+
+.badge-month {
+  display: block;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.badge-day {
+  display: block;
+  font-size: 1.4em;
+  font-weight: 800;
+}
+
+.program-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Row of small info pills */
+.program-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Each small pill (date, location) */
+.meta-pill {
+  font-size: 0.75em;
+  background: var(--light-grey);
+  color: var(--grey-text);
+  padding: 0.25em 0.7em;
+  border-radius: 2em;
+  font-weight: 600;
+}
+
+.program-body h3 {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--black-text);
+}
+
+.program-body p {
+  font-size: 0.87em;
+  color: var(--grey-text);
+  line-height: 1.7;
+}
+
+/* "View Program →" link at the bottom of card */
+.program-link {
+  font-size: 0.87em;
+  font-weight: 700;
+  color: var(--green-light);
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  transition: gap var(--transition);
+}
+
+.program-link:hover {
+  gap: 0.6em; /* Arrow shifts right on hover */
+  color: var(--ochre-dark)
+}
+
+/* ============================================================
+   13. TEAM SECTION
+   Four member cards in a 2x2 or 4-column grid.
+   ============================================================ */
+.team-section {
+  padding: var(--section-pad);
+  background: #fff;
+}
+
+.team-grid {
+  max-width: var(--max-width);
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.team-card {
+  text-align: center;
+  background: var(--light-grey);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+/* Circular image container */
+.team-img-wrap {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--green);
+  /* Placeholder if image missing */
+  background: linear-gradient(135deg, #c0b8ad, #a09890);
+}
+
+.team-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card h4 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.team-card > p {
+  font-size: 0.82em;
+  color: var(--green-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 1rem;
+}
+
+/* Social link buttons on team cards */
+.team-socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.team-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 700;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.team-socials a:hover {
+  background: var(--green-dark);
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   14. STORIES SECTION
+   Blog-style article cards.
+   The first card (.story-card--featured) is larger.
+   ============================================================ */
+.stories-section {
+  padding: var(--section-pad);
+  background: var(--light-grey);
+}
+
+.stories-grid {
+  max-width: var(--max-width);
+  margin: 2.5rem auto 0;
+  display: grid;
+  /*
+    Grid layout:
+    - Featured card spans 2 rows on the left
+    - Two regular cards stack on the right
+    This is CSS Grid named areas — like a sketch on paper
+  */
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+
+/* Each story card */
+.story-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Featured story spans 2 rows */
+.story-card--featured {
+  grid-row: span 2;
+}
+
+.story-img-wrap {
+  overflow: hidden;
+  /* Placeholder gradient */
+  background: linear-gradient(135deg, #b8b2aa, #928d86);
+}
+
+/* Featured card image is taller */
+.story-card--featured .story-img-wrap {
+  height: 320px;
+}
+
+.story-img-wrap img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.story-card--featured .story-img-wrap img {
+  height: 320px;
+}
+
+.story-card:hover .story-img-wrap img {
+  transform: scale(1.04);
+}
+
+.story-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1; /* Take remaining height */
+}
+
+/* Small colour category badge */
+.story-category {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  background: var(--light-grey);
+  padding: 0.2em 0.7em;
+  border-radius: 2em;
+  align-self: flex-start;
+}
+
+.story-body h3 {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.story-card--featured .story-body h3 {
+  font-size: 1.2em;
+}
+
+.story-body p {
+  font-size: 0.86em;
+  color: var(--grey-text);
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* Bottom row: date + read more link */
+.story-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 0.8em;
+  color: var(--grey-text);
+}
+
+/* "Read More →" link */
+.read-more {
+  font-weight: 700;
+  color: var(--green-light);
+  transition: gap var(--transition);
+}
+
+.read-more:hover {
+  color: var(--ochre-dark);
+}
+
+/* ============================================================
+   15. CONTACT SECTION
+   Two-column: CTA text on the left, form on the right.
+   ============================================================ */
+.contact-section {
+  padding: var(--section-pad);
+  background: #fff;
+}
+
+.contact-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-cta h2 {
+  font-size: clamp(1.6em, 3vw, 2.2em);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.contact-cta > p {
+  color: var(--grey-text);
+  line-height: 1.8;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9em;
+  color: var(--grey-text);
+}
+
+/* Icon circle next to each piece of contact info */
+.ci-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(210, 115, 21, 0.1);
+  font-size: 1em;
+  flex-shrink: 0;
+}
+
+/* Form container box */
+.contact-form-wrap {
+  background: var(--light-grey);
+  border-radius: var(--radius);
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each label + input pair */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--black-text);
+}
+
+/* Shared styles for text inputs and textarea */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9em;
+  background: #fff;
+  color: var(--black-text);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+  resize: vertical; /* Textarea can only be resized vertically */
+}
+
+/* Blue-ish glow when input is focused */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(210, 115, 21, 0.15);
+}
+
+.form-submit-btn {
+  width: 100%;
+  font-size: 1em;
+  padding: 0.85em;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   16. FOOTER
+   Dark background footer with 4 columns + bottom bar.
+   ============================================================ */
+.footer {
+  background: #111;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+}
+
+/* Column 1: Brand */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-logo {
+  width: 80px;
+  /* If logo isn't visible on dark BG, invert it to white */
+  filter: brightness(0) invert(1);
+}
+
+.footer-brand p {
+  font-size: 0.88em;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Social links in footer */
+.footer-socials {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75em;
+  font-weight: 700;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.footer-socials a:hover {
+  background: var(--green);
+  border-color: var(--white-text);
+  color: #fff;
+}
+
+/* Columns 2 & 3: link lists */
+.footer-col h5 {
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-col ul li a {
+  font-size: 0.87em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition);
+}
+
+.footer-col ul li a:hover {
+  color: var(--green);
+}
+
+/* Column 4: newsletter */
+.footer-newsletter p {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.newsletter-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletter-input input {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 0.88em;
+  font-family: inherit;
+  transition: border-color var(--transition);
+}
+
+.newsletter-input input:focus {
+  outline: none;
+  border-color: var(--ochre);
+}
+
+.newsletter-input input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-btn {
+  font-size: 0.88em;
+  width: 100%;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.82em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-links a {
+  font-size: 0.82em;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color var(--transition);
+}
+
+.footer-bottom-links a:hover {
+  color: var(--ochre);
+}
+
+/* ============================================================
+   17. SHARED / UTILITY STYLES
+   Reused across multiple sections
+   ============================================================ */
+
+/*
+  Section header: the tag + heading + subtitle
+  shown at the top of each major section
+*/
+.section-header {
+  max-width: var(--max-width);
+  margin: 0 auto 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.5em, 3vw, 2.2em);
+  font-weight: 800;
+  max-width: 18em;
+  line-height: 1.25;
+}
+
+.section-header p {
+  color: var(--grey-text);
+  font-size: 1em;
+  max-width: 38em;
+}
+
+/* Small coloured pill label */
+.section-tag {
+  display: inline-block;
+  background: var(--border);
+  color: var(--green);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3em 0.9em;
+  border-radius: 2em;
+}
+
+/* Light version of the tag (used in dark sections) */
+.section-tag--light {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* The shared "Contact us" / CTA button style */
+.contact-btn {
+  font-family: "Mulish", Arial, Helvetica, sans-serif;
+  background-color: var(--green);
+  color: var(--white-text);
+  border: none;
+  border-radius: 2em;
+  padding: 0.7em 1.3em;
+  font-weight: 700;
+  font-size: 0.9em;
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.contact-btn:hover {
+  background-color: var(--green-dark);
+  transform: translateY(-2px);
+}
+
+/*This is the second styling for the hero btn cause I want the color from the contact to cascade*/
+
+.hero-btn {
+  background-color: var(--green-light);
+}
+
+/*This is UnKle T force adding green btns*/
+/*Turns out it ain't needed again :)*/
+/*
+.green-btn {
+  background-color: var(--green);
+}
+
+.green-btn:hover {
+  background-color: var(--green-dark);
+}
+*/
+
+/* Outline (transparent background) button variant */
+.outline-btn {
+  font-family: "Mulish", Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--white-text);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 2em;
+  padding: 0.65em 1.3em;
+  font-weight: 700;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.outline-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+.hero-btn {
+  font-size: 1em;
+}
+
+/*
+  Scroll-reveal animation class.
+  JS adds this when an element comes into view.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   18. LARGE SCREEN OVERRIDES
+   On very wide screens (>1710px), widen the navbar
+   ============================================================ */
+@media screen and (min-width: 1710px) {
+  #nav-bar {
+    width: clamp(45em, 90vw, 100em);
+  }
+}
