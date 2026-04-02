@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Child Of Wealth Initiative</title>
+  <link rel="icon" href="./Images/COWI_logo.png">
+  <link rel="stylesheet" href="./Styles/style.css">
+  <link rel="stylesheet" href="./Styles/tablet.css">
+  <link rel="stylesheet" href="./Styles/about.css">
+</head>
+<body id="about-body">
+  <!-- ===== MAIN NAV BAR (Desktop) ===== -->
+
+  <!-- This is the navigation bar shown on large screens (laptops/desktops) -->
+  <nav id="nav-bar" class="nav-bar">
+    <ul>
+      <li>
+        <!-- Logo image - stored locally in the Images folder -->
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo">
+      </li>
+      <li> <a class="active-link" href="./index.html">Home</a> </li>
+      <li> <a href="#about">About Us</a> </li>
+      <li> <a href="#causes">Causes</a> </li>
+      <li> <a href="#programs">Events</a> </li>
+      <li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>
+      <li> <a href="#contact"><button class="contact-btn nav-bar-btn">Contact us</button></a> </li>
+      <!-- The "more-icon" (three dots / hamburger) only appears on small screens -->
+      <li><img src="./Images/more-icon.svg" class="more-icon" onclick="openSidebar()"></li>
+    </ul>
+  </nav>
+
+  <!-- ===== SIDEBAR NAV BAR (Mobile/Tablet) ===== -->
+  <!-- This nav slides down when the hamburger icon is tapped on small screens -->
+  <nav id="sc-nav-bar" class="sc-nav-bar">
+    <ul>
+      <li>
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo">
+        <img onclick="closeSidebar()" src="./Images/close-icon.svg" alt="close icon" class="close-icon">
+      </li>
+      <li> <a class="sc-active-link" href="#">Home</a> </li>
+      <li> <a href="#about">About Us</a> </li>
+      <li> <a href="#causes">Causes</a> </li>
+      <li> <a href="#programs">Events</a> </li>
+      <li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>
+      <li> <a href="#contact"><button class="contact-btn sc-nav-bar-btn">Contact us</button></a> </li>
+    </ul>
+  </nav>
+
+  <!-- Invisible overlay - clicking it closes the sidebar on mobile -->
+  <div id="background-close" onclick="closeSidebarBackground()" class="close-overlay-invisble"></div>
+
+<!-- ===== ABOUT / OUR JOURNEY SECTION ===== -->
+  <!-- Two-column layout: text on left, image on right -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+
+      <!-- Left column: all the text content -->
+      <div class="about-text">
+        <!--<span class="section-tag">What We Stand For</span>--->
+        <h2><em>Who We Are</em></h2>
+        <p>
+          Child of Wealth Initiative is a non-profit organisation born out of deep concern for children deprived of life’s basic needs, especially quality education, who are then left to struggle without hope and risk becoming a menace to society.
+        </p>
+        <p>
+          We are committed to empowering young minds in rural and semi-urban communities, restoring their dreams, and opening doors to a brighter future where every child can thrive.
+        </p>
+        <!--<a href="#contact"><button class="contact-btn about-btn">Join Our Mission</button></a>--->
+      </div>
+
+      <!-- Right column: image + floating badge -->
+      <div class="about-image-wrap">
+        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <!-- A little badge that floats over the image -->
+        <div class="about-badge">
+          <span class="badge-icon">❤</span>
+          <div>
+            <strong>Children First</strong>
+            <small>Always at our core</small>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Inverted column: image + floating badge -->
+      <div class="about-image-wrap">
+        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <!-- A little badge that floats over the image -->
+        <div class="about-badge">
+          <span class="badge-icon">❤</span>
+          <div>
+            <strong>Children First</strong>
+            <small>Always at our core</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left column: all the text content -->
+      <div class="about-text">
+        <!--<span class="section-tag">What We Stand For</span>--->
+        <h2><em>What We Stand For</em></h2>
+        <p>
+          Our mission is to reach as many young ones as possible through initiatives such as:
+        </p>
+        <ul>
+          <li>Community and school outreaches</li>
+          <li>Sensitisation and awareness campaigns</li>
+          <li>Skill Acquisition - vocational training and tech empowerment</li>
+          <li> Educational Scholarships</li>
+        </ul>
+
+        <p>We believe, as Marian Wright Edelman rightly said, “Children who are victims of
+poverty—educationally and otherwise—are the greatest threat to the well-being of a nation.”</p>
+
+        <p>We envision a world where no child is left on the streets, where every young mind is equipped
+with the tools to thrive, and where today’s children grow into visionary leaders who will stand out
+and transform their communities, the nation, and the world at large.</p>
+        <!--<a href="#contact"><button class="contact-btn about-btn">Join Our Mission</button></a>--->
+      </div>
+
+      <!-- Left column: all the text content -->
+      <div class="about-text">
+        <!--<span class="section-tag">What We Stand For</span>--->
+        <h2><em>Who We Are</em></h2>
+        <p>
+          Child of Wealth Initiative is a non-profit organisation born out of deep concern for children deprived of life’s basic needs, especially quality education, who are then left to struggle without hope and risk becoming a menace to society.
+        </p>
+        <p>
+          We are committed to empowering young minds in rural and semi-urban communities, restoring their dreams, and opening doors to a brighter future where every child can thrive.
+        </p>
+        <!--<a href="#contact"><button class="contact-btn about-btn">Join Our Mission</button></a>--->
+      </div>
+
+      <!-- Right column: image + floating badge -->
+      <div class="about-image-wrap">
+        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <!-- A little badge that floats over the image -->
+        <div class="about-badge">
+          <span class="badge-icon">❤</span>
+          <div>
+            <strong>Children First</strong>
+            <small>Always at our core</small>
+          </div>
+        </div>
+      </div>
+
+</body>
+</html>

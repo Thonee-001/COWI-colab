@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./Images/COWI_logo.png">
+  <link rel="stylesheet" href="./Styles/style.css">
+  <link rel="stylesheet" href="./Styles/tablet.css">
+  <title>Child Of Wealth Initiative</title>
+</head>
+<body>
+
+  <!-- ===== MAIN NAV BAR (Desktop) ===== -->
+
+  <!-- This is the navigation bar shown on large screens (laptops/desktops) -->
+  <nav id="nav-bar" class="nav-bar">
+    <ul>
+      <li>
+        <!-- Logo image - stored locally in the Images folder -->
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo">
+      </li>
+      <li> <a class="active-link" href="#">Home</a> </li>
+      <li> <a href="#about">About Us</a> </li>
+      <li> <a href="#causes">Causes</a> </li>
+      <li> <a href="#programs">Events</a> </li>
+      <li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>
+      <li> <a href="#contact"><button class="contact-btn nav-bar-btn">Contact us</button></a> </li>
+      <!-- The "more-icon" (three dots / hamburger) only appears on small screens -->
+      <li><img src="./Images/more-icon.svg" class="more-icon" onclick="openSidebar()"></li>
+    </ul>
+  </nav>
+
+  <!-- ===== SIDEBAR NAV BAR (Mobile/Tablet) ===== -->
+  <!-- This nav slides down when the hamburger icon is tapped on small screens -->
+  <nav id="sc-nav-bar" class="sc-nav-bar">
+    <ul>
+      <li>
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo">
+        <img onclick="closeSidebar()" src="./Images/close-icon.svg" alt="close icon" class="close-icon">
+      </li>
+      <li> <a class="sc-active-link" href="#">Home</a> </li>
+      <li> <a href="#about">About Us</a> </li>
+      <!--<li> <a href="#causes">Causes</a> </li>--->
+      <li> <a href="#programs">Events</a> </li>
+      <li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>
+      <li> <a href="#contact"><button class="contact-btn sc-nav-bar-btn">Contact us</button></a> </li>
+    </ul>
+  </nav>
+
+  <!-- Invisible overlay - clicking it closes the sidebar on mobile -->
+  <div id="background-close" onclick="closeSidebarBackground()" class="close-overlay-invisble"></div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <!-- The big banner/header section at the top of the page -->
+  <header class="hero" id="home">
+    <div class="hero-overlay">
+      <div class="hero-con fade-in">
+        <!--<span class="hero-tag">Child Of Wealth Initiative</span>--->
+        <h1>Empowering As Many Young Minds As Possible</h1>
+        <div class="hero-actions">
+          <a href="#contact"><button class="contact-btn hero-btn">Contact us</button></a>
+          <a href="#causes"><button class="outline-btn hero-btn">Our Causes</button></a>
+        </div>
+        <p>We are passionate about ensuring that children are lifted off the streets and are equipped with the right tools and opportunities needed to thrive and succeed.</p>
+      </div>
+    </div>
+
+    <!-- ===== STATS BAR ===== -->
+    <!-- The row of numbers shown at the bottom of the hero section -->
+    <div class="stats-bar fade-in">
+      <div class="stat-item">
+        <h3>300+</h3>
+        <p>Children Reached</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <h3>5+</h3>
+        <p>Programs Running</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <h3>20+</h3>
+        <p>Communities Served</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <h3>2+</h3>
+        <p>Years of Impact</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== ABOUT / OUR JOURNEY SECTION ===== -->
+  <!-- Two-column layout: text on left, image on right
+  <section class="about-section" id="about">
+    <div class="about-inner">
+
+      <!-- Left column: all the text content
+      <div class="about-text">
+        <!--<span class="section-tag">What We Stand For</span>
+        <h2><em>Who We Are</em></h2>
+        <p>
+          Child of Wealth Initiative is a non-profit organisation born out of deep concern for children deprived of life’s basic needs, especially quality education, who are then left to struggle without hope and risk becoming a menace to society.
+        </p>
+        <p>
+          We are committed to empowering young minds in rural and semi-urban communities, restoring their dreams, and opening doors to a brighter future where every child can thrive.
+        </p>
+        <a href="#contact"><button class="contact-btn about-btn">Join Our Mission</button></a>
+      </div>
+
+      <!-- Right column: image + floating badge
+      <div class="about-image-wrap">
+        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <!-- A little badge that floats over the image
+        <div class="about-badge">
+          <span class="badge-icon">❤</span>
+          <div>
+            <strong>Children First</strong>
+            <small>Always at our core</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section> --->
+
+  <!-- ===== CAUSES SECTION ===== -->
+  <!-- Cards showing what COWI supports / fights for -->
+  <!--<section class="causes-section" id="causes">
+    <div class="section-header">
+      <span class="section-tag">Donate to Us</span>
+      <h2>Discover The Popular Causes and Make a Donation to Support Them</h2>
+      <p>Every contribution, no matter how small, changes a life forever.</p>
+    </div>
+
+    <div class="causes-grid">
+
+      <!-- Cause Card 1
+      <div class="cause-card">
+        <div class="cause-img-wrap">
+          <img src="./Images/cause-health.jpg" alt="Health initiative">
+          <!-- Percentage bar showing how much of the goal has been raised
+          <div class="cause-tag">Healthcare</div>
+        </div>
+        <div class="cause-body">
+          <h3>Supporting Child Health Initiatives Nationwide</h3>
+          <p>Providing medical care, vaccinations, and wellness programs to children in remote communities.</p>
+          <!-- Progress bar showing fundraising progress
+          <div class="progress-wrap">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 72%"></div>
+            </div>
+            <div class="progress-labels">
+              <span>Raised: ₦720,000</span>
+              <span>Goal: ₦1,000,000</span>
+            </div>
+          </div>
+          <a href="#contact"><button class="contact-btn cause-btn">Donate Now</button></a>
+        </div>
+      </div>
+
+      <!-- Cause Card 2
+      <div class="cause-card">
+        <div class="cause-img-wrap">
+          <img src="./Images/cause-education.jpg" alt="Education initiative">
+          <div class="cause-tag">Education</div>
+        </div>
+        <div class="cause-body">
+          <h3>Breaking Barriers Through Quality Education</h3>
+          <p>Funding school supplies, scholarships, and learning centres for disadvantaged children.</p>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width: 55%"></div></div>
+            <div class="progress-labels">
+              <span>Raised: ₦550,000</span>
+              <span>Goal: ₦1,000,000</span>
+            </div>
+          </div>
+          <a href="#contact"><button class="contact-btn cause-btn">Donate Now</button></a>
+        </div>
+      </div>
+
+      <!-- Cause Card 3
+      <div class="cause-card">
+        <div class="cause-img-wrap">
+          <img src="./Images/cause-nutrition.jpg" alt="Nutrition initiative">
+          <div class="cause-tag">Nutrition</div>
+        </div>
+        <div class="cause-body">
+          <h3>Nourishing Young Minds & Growing Bodies</h3>
+          <p>Daily meal programs and nutritional support ensuring no child faces hunger.</p>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width: 88%"></div></div>
+            <div class="progress-labels">
+              <span>Raised: ₦880,000</span>
+              <span>Goal: ₦1,000,000</span>
+            </div>
+          </div>
+          <a href="#contact"><button class="contact-btn cause-btn">Donate Now</button></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  --->
+
+  <!-- ===== PROGRAMS & INITIATIVES SECTION ===== -->
+  <!-- Inspired by ideatafrica.com — cards showing COWI's programs -->
+  <section class="programs-section" id="programs">
+    <div class="section-header">
+      <span class="section-tag">Charity Events</span>
+      <h2>Our Programs &amp; Initiatives</h2>
+      <p>Structured, community-driven programs designed to create lasting transformation.</p>
+    </div>
+
+    <div class="programs-grid">
+
+      <!-- Program Card 1 -->
+      <div class="program-card">
+        <!-- Image at top of card -->
+        <div class="program-img-wrap">
+          <img src="./Images/Events/TEL/T_.jpeg" alt="Tech Empowerment Launchpad">
+          <!-- Small badge on the image -->
+          <div class="program-date-badge">
+            <span class="badge-month">JAN</span>
+            <span class="badge-day">2026</span>
+          </div>
+        </div>
+        <div class="program-body">
+          <!-- Row of small info pills (icons + text) -->
+          <div class="program-meta">
+            <span class="meta-pill">📅 JAN, 2026</span>
+            <span class="meta-pill">📍 Remote</span>
+          </div>
+          <h3>Tech Empowerment Launchpad</h3>
+          <p>1 month free virtual bootcamp for out of school teens and secondary school leavers.</p>
+          <p>Equipping <b>100</b> young minds with in-demand digital skills and real world opportunities.</p>
+          <a href="./Event_Gallery/tel.html" target="_self" class="program-link">View Program →</a>
+        </div>
+      </div>
+
+      <!-- Program Card 2 -->
+      <div class="program-card">
+        <div class="program-img-wrap">
+          <img src="./Images/program-skills.jpg" alt="Skills training program">
+          <div class="program-date-badge">
+            <span class="badge-month">JUL</span>
+            <span class="badge-day">20</span>
+          </div>
+        </div>
+        <div class="program-body">
+          <div class="program-meta">
+            <span class="meta-pill">📅 July 20, 2025</span>
+            <span class="meta-pill">📍 Abuja</span>
+          </div>
+          <h3>Youth Skills &amp; Empowerment Workshop</h3>
+          <p>Teaching practical life skills — financial literacy, digital skills, and vocational training — to teenagers aged 13–18.</p>
+          <a href="#" class="program-link">View Program →</a>
+        </div>
+      </div>
+
+      <!-- Program Card 3 -->
+      <div class="program-card">
+        <div class="program-img-wrap">
+          <img src="./Images/program-mentorship.jpg" alt="Mentorship program">
+          <div class="program-date-badge">
+            <span class="badge-month">AUG</span>
+            <span class="badge-day">5</span>
+          </div>
+        </div>
+        <div class="program-body">
+          <div class="program-meta">
+            <span class="meta-pill">📅 August 5, 2025</span>
+            <span class="meta-pill">📍 Lagos</span>
+          </div>
+          <h3>Mentorship &amp; Leadership Bootcamp</h3>
+          <p>Connecting bright young minds with experienced mentors from top industries to guide their future career paths and build confidence.</p>
+          <a href="#" class="program-link">View Program →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== TEAM SECTION ===== -->
+  <!-- Showing the people behind COWI -->
+  <section class="team-section" id="team">
+    <div class="section-header">
+      <span class="section-tag">Our People</span>
+      <h2>Meet the Dedicated Team Behind COWI</h2>
+      <p>Passionate individuals committed to changing young lives every single day.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Team Member Card -->
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="./Images/team-1.jpg" alt="Team member">
+        </div>
+        <h4>Adaeze Okonkwo</h4>
+        <p>Executive Director</p>
+        <div class="team-socials">
+          <!--<a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>--->
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="./Images/team-2.jpg" alt="Team member">
+        </div>
+        <h4>Chukwuemeka Balogun</h4>
+        <p>Programs Coordinator</p>
+        <div class="team-socials">
+          <!--<a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>--->
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="./Images/team-3.jpg" alt="Team member">
+        </div>
+        <h4>Ngozi Eze</h4>
+        <p>Community Outreach Lead</p>
+        <div class="team-socials">
+          <!--<a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>--->
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <img src="./Images/team-4.jpg" alt="Team member">
+        </div>
+        <h4>Taiwo Adebisi</h4>
+        <p>Finance &amp; Operations</p>
+        <div class="team-socials">
+          <!--<a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>--->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== STORIES SECTION ===== -->
+  <!-- Blog-style cards showing real impact stories -->
+  <section class="stories-section" id="stories">
+    <div class="section-header">
+      <span class="section-tag">Real Impact</span>
+      <h2>Stories That Inspire &amp; Move Us</h2>
+      <p>Hear directly from the lives we've had the privilege of touching.</p>
+    </div>
+
+    <div class="stories-grid">
+
+      <!-- Story Card 1 -->
+      <article class="story-card story-card--featured">
+        <div class="story-img-wrap">
+          <img src="./Images/story-1.jpg" alt="Children at a COWI event">
+        </div>
+        <div class="story-body">
+          <span class="story-category">Education</span>
+          <h3>From the Streets to the Classroom: Amara's Journey</h3>
+          <p>At just 9 years old, Amara had never held a pencil. Today, thanks to COWI's school enrolment drive, she is top of her class and dreams of becoming an engineer.</p>
+          <div class="story-meta">
+            <span>March 10, 2025</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story Card 2 -->
+      <article class="story-card">
+        <div class="story-img-wrap">
+          <img src="./Images/story-2.jpg" alt="Community gathering">
+        </div>
+        <div class="story-body">
+          <span class="story-category">Health</span>
+          <h3>How a Free Medical Camp Saved 40 Children in One Day</h3>
+          <p>Our mobile health team reached a remote community with no clinic access — in a single afternoon, over 40 children received treatment.</p>
+          <div class="story-meta">
+            <span>February 5, 2025</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story Card 3 -->
+      <article class="story-card">
+        <div class="story-img-wrap">
+          <img src="./Images/story-3.jpg" alt="Youth workshop">
+        </div>
+        <div class="story-body">
+          <span class="story-category">Empowerment</span>
+          <h3>The Workshop That Changed a Teenager's Entire Future</h3>
+          <p>Emeka attended our youth empowerment bootcamp with no direction. Six months later he launched his own small business, employing two others.</p>
+          <div class="story-meta">
+            <span>January 18, 2025</span>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <!-- Simple contact / call-to-action section at the bottom -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+
+      <!-- Left: big text CTA -->
+      <div class="contact-cta">
+        <span class="section-tag section-tag--light">Get In Touch</span>
+        <h2>Ready to Make a Difference?</h2>
+        <p>Whether you want to donate, volunteer, partner with us, or simply know more — we would love to hear from you.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <span class="ci-icon">📧</span>
+            <span>childofwealthinitiative@gmail.com</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="ci-icon">📞</span>
+            <span>+234 704 015 9996</span>
+          </div>
+          <div class="contact-info-item">
+            <span class="ci-icon">📍</span>
+            <span>Akure, Ondo State, Nigeria</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: contact form -->
+      <div class="contact-form-wrap">
+        <div class="contact-form">
+          <!-- Each label + input pair is one form field -->
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" id="femail" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="fsubject">Subject</label>
+            <input type="text" id="fsubject" placeholder="What are you reaching out for?">
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Message</label>
+            <textarea id="fmessage" rows="4" placeholder="Tell us more..."></textarea>
+          </div>
+          <!-- The button calls submitForm() defined in main.js -->
+          <button class="contact-btn form-submit-btn" onclick="submitForm()">Send Message</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <!-- Column 1: brand info -->
+      <div class="footer-brand">
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="footer-logo">
+        <p>Child Of Wealth Initiative — reaching the youngest and most vulnerable, one child at a time.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+
+      <!-- Column 2: quick links -->
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">Our Journey</a></li>
+          <li><a href="#causes">Causes</a></li>
+          <li><a href="#programs">Events</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#stories">Stories</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: our programs -->
+      <div class="footer-col">
+        <h5>Our Programs</h5>
+        <ul>
+          <li><a href="#">Community Outreach</a></li>
+          <li><a href="#">Youth Empowerment</a></li>
+          <li><a href="#">Mentorship</a></li>
+          <li><a href="#">Health Camps</a></li>
+          <li><a href="#">Education Fund</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: newsletter signup -->
+      <div class="footer-col footer-newsletter">
+        <h5>Stay Updated</h5>
+        <p>Subscribe to get the latest news and impact stories from COWI.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="your@email.com" id="newsletter-email">
+          <button class="contact-btn newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar with copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Child Of Wealth Initiative. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link to our JavaScript file (defer means it loads after the HTML) -->
+  <script src="./Scripts/main.js" defer></script>
+
+</body>
+</html>
