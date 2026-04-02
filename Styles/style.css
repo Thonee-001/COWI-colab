@@ -704,7 +704,7 @@ button {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--green);
+  background: red;
   color: #fff;
   border-radius: 8px;
   padding: 0.4em 0.7em;
