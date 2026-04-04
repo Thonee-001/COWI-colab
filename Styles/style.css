@@ -235,8 +235,14 @@ button {
   color: var(--green-light) !important;
 }
 
-/* Hide the hamburger more-icon on desktop */
+/* Hide the hamburger more-icon on desktop 
 #nav-bar ul li:nth-child(9) {
+  display: none;
+}
+*/
+
+/*New hide hambugar more-icon on desktop*/
+.more-icon {
   display: none;
 }
 
@@ -464,7 +470,8 @@ button {
   line-height: 1.8;
 }
 
-.about-text ul{
+.about-text ul,
+.contact-cta ul{
   margin-left: 3em;
 }
 
