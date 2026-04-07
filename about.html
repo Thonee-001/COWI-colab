@@ -15,19 +15,19 @@
   <!-- This is the navigation bar shown on large screens (laptops/desktops) -->
   <nav id="nav-bar" class="nav-bar">
     <ul>
-      <li>
+      <li class="nav-logo-con">
         <!-- Logo image - stored locally in the Images folder -->
-        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo">
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo" id="nav-logo">
       </li>
-      <li> <a class="active-link" href="./index.html">Home</a> </li>
-      <li> <a href="#about">About Us</a> </li>
-      <li> <a href="#causes">Causes</a> </li>
-      <li> <a href="#programs">Events</a> </li>
-      <li> <a href="#team">Team</a> </li>
-      <li> <a href="#stories">Stories</a> </li>
-      <li> <a href="#contact"><button class="contact-btn nav-bar-btn">Contact us</button></a> </li>
+      <li> <a href="index.html">Home</a> </li>
+      <!--<li> <a href="#">About Us</a> </li>-->
+      <!--<li> <a href="#causes">Causes</a> </li>-->
+      <li> <a href="./index.html#programs">Events</a> </li>
+      <!--<li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>-->
+      <li> <a href="./index.html#contact"><button class="contact-btn nav-bar-btn">Contact us</button></a> </li>
       <!-- The "more-icon" (three dots / hamburger) only appears on small screens -->
-      <li><img src="./Images/more-icon.svg" class="more-icon" onclick="openSidebar()"></li>
+      <li class="more-icon-con"><img src="./Images/more-icon.svg" id="more-icon" onclick="openSidebar()"></li>
     </ul>
   </nav>
 
@@ -35,17 +35,17 @@
   <!-- This nav slides down when the hamburger icon is tapped on small screens -->
   <nav id="sc-nav-bar" class="sc-nav-bar">
     <ul>
-      <li>
-        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo">
+      <li class="sc-logo-con">
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo" id="sc-logo">
         <img onclick="closeSidebar()" src="./Images/close-icon.svg" alt="close icon" class="close-icon">
       </li>
-      <li> <a class="sc-active-link" href="#">Home</a> </li>
-      <li> <a href="#about">About Us</a> </li>
-      <li> <a href="#causes">Causes</a> </li>
-      <li> <a href="#programs">Events</a> </li>
-      <li> <a href="#team">Team</a> </li>
-      <li> <a href="#stories">Stories</a> </li>
-      <li> <a href="#contact"><button class="contact-btn sc-nav-bar-btn">Contact us</button></a> </li>
+      <li> <a class="sc-active-link" href="./index.html">Home</a> </li>
+      <!--<li> <a href="./about.html">About Us</a> </li>-->
+      <!--<li> <a href="#causes">Causes</a> </li>--->
+      <li> <a href="./index.html#programs">Events</a> </li>
+      <!--<li> <a href="#team">Team</a> </li>
+      <li> <a href="#stories">Stories</a> </li>-->
+      <li> <a href="./index.html#contact"><button class="contact-btn sc-nav-bar-btn">Contact us</button></a> </li>
     </ul>
   </nav>
 
@@ -72,29 +72,29 @@
 
       <!-- Right column: image + floating badge -->
       <div class="about-image-wrap">
-        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <img src="./Images/Events/ETIC/ETIC_13.jpg" alt="loading" class="about-img">
         <!-- A little badge that floats over the image -->
-        <div class="about-badge">
+        <!--<div class="about-badge">
           <span class="badge-icon">❤</span>
           <div>
             <strong>Children First</strong>
             <small>Always at our core</small>
           </div>
-        </div>
+        </div>-->
       </div>
 
 
       <!-- Right column: image + floating badge -->
       <div class="about-image-wrap invert-item-a">
-        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <img src="./Images/Events/GESF/GESF_30.jpg" alt="loading" class="about-img">
         <!-- A little badge that floats over the image -->
-        <div class="about-badge">
+        <!--<div class="about-badge">
           <span class="badge-icon">❤</span>
           <div>
             <strong>Children First</strong>
             <small>Always at our core</small>
           </div>
-        </div>
+        </div>-->
       </div>
 
       <!-- inverted column: all the text content -->
@@ -128,35 +128,35 @@
         </ul>
         <!--<a href="#contact"><button class="contact-btn about-btn">Join Our Mission</button></a>--->
       </div>
-      
+
       <!-- Right column: image + floating badge -->
       <div class="about-image-wrap">
-        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <img src="./Images/Events/ETIC/ETIC_24.jpg" alt="loading" class="about-img">
         <!-- A little badge that floats over the image -->
-        <div class="about-badge">
+        <!--<div class="about-badge">
           <span class="badge-icon">❤</span>
           <div>
             <strong>Children First</strong>
             <small>Always at our core</small>
           </div>
-        </div>
+        </div>-->
       </div>
 
 
       <!-- Right column: image + floating badge -->
       <div class="about-image-wrap invert-item-c">
-        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <img src="./Images/Events/ETIC/ETIC_23.jpg" alt="loading" class="about-img">
         <!-- A little badge that floats over the image -->
-        <div class="about-badge">
+        <!--<div class="about-badge">
           <span class="badge-icon">❤</span>
           <div>
             <strong>Children First</strong>
             <small>Always at our core</small>
           </div>
-        </div>
+        </div>-->
       </div
 
-      
+
       <!-- Inverted-2 column: all the text content -->
       <div class="about-text invert-item-d">
         <!--<span class="section-tag">What We Stand For</span>--->
@@ -187,18 +187,19 @@ sensitisation and awareness campaigns (onsite and online)</li>
 
       <!-- Right column: image + floating badge -->
       <div class="about-image-wrap">
-        <img src="./Images/about-children.jpg" alt="Children smiling together" class="about-img">
+        <img src="./Images/Events/ETIC/ETIC_4.jpg" alt="loading" class="about-img">
         <!-- A little badge that floats over the image -->
-        <div class="about-badge">
+        <!--<div class="about-badge">
           <span class="badge-icon">❤</span>
           <div>
             <strong>Children First</strong>
             <small>Always at our core</small>
           </div>
-        </div>
+        </div>-->
       </div>
-      
+
     </div>
   </section>
+  <script src="./Scripts/main.js" defer></script>
 </body>
 </html>
