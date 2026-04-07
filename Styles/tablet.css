@@ -1,28 +1,26 @@
 /* ============================================================
    COWI — Child Of Wealth Initiative
    Responsive Stylesheet (tablet.css)
-   
-   This file handles ALL responsive design — meaning how the 
+
+   This file handles ALL responsive design — meaning how the
    website looks on smaller screens like tablets and phones.
-   
+
    HOW MEDIA QUERIES WORK:
    @media screen and (max-width: 950px) { ... }
-   
-   This says: "Apply the styles inside only when the screen 
+
+   This says: "Apply the styles inside only when the screen
    is 950 pixels wide or narrower."
-   
+
    We have three breakpoints:
    1. ≤950px  — Tablets (iPad, etc.)
    2. ≤680px  — Large phones (iPhone Plus, etc.)
    3. ≤430px  — Small phones (standard iPhone, etc.)
    ============================================================ */
 
-
 /* ============================================================
    TABLET BREAKPOINT — screens up to 950px wide
    ============================================================ */
 @media screen and (max-width: 950px) {
-
   /* ---- NAVBAR ---- */
 
   /* Make both navbars narrower */
@@ -32,11 +30,27 @@
   }
 
   /* Hide all nav links on the main navbar */
-  #nav-bar a {
+  .nav-bar a {
     display: none;
   }
 
-  /* Show the hamburger menu icon (9th list item) 
+  .nav-logo-con {
+    display: flex;
+    align-items: center;
+    margin: 0 auto 0 0;
+    width: clamp(3em, 6%, 4.3em);
+  }
+
+  #nav-bar img,
+  #nav-logo,
+  .logo{
+    diplay: none;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Show the hamburger menu icon (9th list item)
   #nav-bar ul li:nth-child(9) {
     display: flex;
     align-items: center;
@@ -47,12 +61,18 @@
 
   /*New show hambugar menu icon on tablet/mobile*/
 
-.more-icon {
-  display: flex;
-  align-items: center;
-  margin: 0 0 0 auto;
-  width: clamp(2em, 5%, 3.3em);
-}
+  .more-icon-con {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+    width: clamp(2em, 5%, 3.3em);
+  }
+
+  #more-icon {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
 
   /* Make the hamburger icon white*/
   .more-icon img {
@@ -82,7 +102,7 @@
     transform: translateX(-50%);
     background-color: var(--glass);
     backdrop-filter: blur(14px);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
     border-radius: 1.5em;
     padding: 0 clamp(0.7em, 2vh, 2em) clamp(0.7em, 2vh, 2em);
     width: clamp(20em, 90vw, 40em);
@@ -131,6 +151,8 @@
     margin: 0 auto 0 0;
   }
 
+
+  
   /* Make the close icon white */
   .close-icon {
     filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(2%)
@@ -275,12 +297,10 @@
   }
 }
 
-
 /* ============================================================
    LARGE PHONE BREAKPOINT — screens up to 680px wide
    ============================================================ */
 @media screen and (max-width: 680px) {
-
   /* ---- HERO ---- */
   .hero-overlay {
     padding: 7rem 1.5rem 2.5rem;
@@ -358,12 +378,10 @@
   }
 }
 
-
 /* ============================================================
    SMALL PHONE BREAKPOINT — screens up to 430px wide
    ============================================================ */
 @media screen and (max-width: 430px) {
-
   /* Even smaller navbar */
   #nav-bar,
   #sc-nav-bar {
