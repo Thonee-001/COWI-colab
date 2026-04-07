@@ -15,9 +15,8 @@
   <!-- This is the navigation bar shown on large screens (laptops/desktops) -->
   <nav id="nav-bar" class="nav-bar">
     <ul>
-      <li>
-        <!-- Logo image - stored locally in the Images folder -->
-        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo">
+      <li class="nav-logo-con">
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="logo" id="nav-logo">
       </li>
       <li> <a class="active-link" href="#">Home</a> </li>
       <li> <a href="./about.html">About Us</a> </li>
@@ -27,7 +26,7 @@
       <li> <a href="#stories">Stories</a> </li>-->
       <li> <a href="#contact"><button class="contact-btn nav-bar-btn">Contact us</button></a> </li>
       <!-- The "more-icon" (three dots / hamburger) only appears on small screens -->
-      <li><img src="./Images/more-icon.svg" class="more-icon" onclick="openSidebar()"></li>
+      <li class="more-icon-con"><img src="./Images/more-icon.svg" id="more-icon" onclick="openSidebar()"></li>
     </ul>
   </nav>
 
@@ -35,8 +34,8 @@
   <!-- This nav slides down when the hamburger icon is tapped on small screens -->
   <nav id="sc-nav-bar" class="sc-nav-bar">
     <ul>
-      <li>
-        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo">
+      <li class="sc-logo-con">
+        <img src="./Images/COWI_logo.png" alt="COWI Logo" class="sc-logo" id="sc-logo">
         <img onclick="closeSidebar()" src="./Images/close-icon.svg" alt="close icon" class="close-icon">
       </li>
       <li> <a class="sc-active-link" href="#">Home</a> </li>
@@ -61,7 +60,7 @@
         <h1>Empowering As Many Young Minds As Possible</h1>
         <div class="hero-actions">
           <a href="#contact"><button class="contact-btn hero-btn">Contact us</button></a>
-          <a href="#causes"><button class="outline-btn hero-btn">Our Causes</button></a>
+          <a href="https://forms.gle/3AkrZKUtXDwdhhfN7" target="_blank"><button class="outline-btn hero-btn">Become a Volunteer</button></a>
         </div>
         <p>We are passionate about ensuring that children are lifted off the streets and are equipped with the right tools and opportunities needed to thrive and succeed.</p>
       </div>
@@ -579,7 +578,7 @@ Enlightenment and many more.</p>
           </div>
           <!-- The button calls submitForm() defined in main.js -->
           <!--<button class="contact-btn form-submit-btn" onclick="submitForm()">Send Message</button>--->
-          <a href="./error.html"><button class="contact-btn form-submit-btn">Send Message</button>
+          <a href="./error.html"><button class="contact-btn form-submit-btn">Send Message</button></a>
         </div>
       </div>
 
@@ -587,7 +586,7 @@ Enlightenment and many more.</p>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="footer-inner">
 
       <!-- Column 1: brand info -->
@@ -596,10 +595,10 @@ Enlightenment and many more.</p>
         <p>Child of Wealth Initiative — empowering young minds, restoring their hopes for a brighter future.
 </p>
         <div class="footer-socials">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">IG</a>
+          <a href="https://www.linkedin.com/company/cowi-foundation/" target="_blank" aria-label="LinkedIn">in</a>
+          <a href="https://www.instagram.com/childofwealth_initiative" target="_blank" aria-label="Instagram">IG</a>
           <!--<a href="#" aria-label="Twitter">𝕏</a>-->
-          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="https://www.facebook.com/profile.php" target="_blank" aria-label="Facebook">f</a>
         </div>
       </div>
 
@@ -608,11 +607,11 @@ Enlightenment and many more.</p>
         <h5>Quick Links</h5>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#about">Our Journey</a></li>
-          <li><a href="#causes">Causes</a></li>
+          <li><a href="./about.html">Our Journey</a></li>
+          <!--<li><a href="#causes">Causes</a></li>-->
           <li><a href="#programs">Events</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#stories">Stories</a></li>
+          <!--<li><a href="#team">Team</a></li>
+          <li><a href="#stories">Stories</a></li>-->
         </ul>
       </div>
 
@@ -620,13 +619,13 @@ Enlightenment and many more.</p>
       <div class="footer-col">
         <h5>Our Programs</h5>
         <ul>
-          <li><a href="#">Community Outreach</a></li>
-          <li><a href="#">School Outreach</a></li>
-          <li><a href="#">Educational Scholarships</a></li>
-          <li><a href="#">Awareness &amp; Sensitisation</a></li>
-          <li><a href="#">Campaings</a></li>
-          <li><a href="#">Tech Empowerment</a></li>
-          <li><a href="#">Vocational Skill Acquisition</a></li>
+          <li><a href="./Event_Gallery/etic.html">Community Outreach</a></li>
+          <li><a href="./Event_Gallery/gesf.html">School Outreach</a></li>
+          <li><a href="./Event_Gallery/tel.html">Educational Scholarships</a></li>
+          <li><a href="#footer">Awareness &amp; Sensitisation</a></li>
+          <li><a href="#footer">Campaings</a></li>
+          <li><a href="./Event_Gallery/tel.html">Tech Empowerment</a></li>
+          <li><a href="#footer">Vocational Skill Acquisition</a></li>
         </ul>
       </div>
 
@@ -636,7 +635,10 @@ Enlightenment and many more.</p>
         <p>Subscribe to get the latest news and impact stories from COWI.</p>
         <div class="newsletter-input">
           <input type="email" placeholder="your@email.com" id="newsletter-email">
-          <button class="contact-btn newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+          <!--<button class="contact-btn newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>-->
+          <a
+            href="./error.html"><button style="width: 100%"
+                                  class="contact-btn newsleter-btn">Subscribe</button></a>
         </div>
       </div>
 
@@ -644,7 +646,7 @@ Enlightenment and many more.</p>
 
     <!-- Bottom bar with copyright -->
     <div class="footer-bottom">
-      <p>&copy; 2025 Child Of Wealth Initiative. All rights reserved.</p>
+      <p>&copy; 2026 Child Of Wealth Initiative. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
