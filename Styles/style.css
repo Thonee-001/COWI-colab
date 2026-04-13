@@ -235,7 +235,7 @@ button {
   color: var(--green-light) !important;
 }
 
-/* Hide the hamburger more-icon on desktop 
+/* Hide the hamburger more-icon on desktop
 #nav-bar ul li:nth-child(9) {
   display: none;
 }
@@ -429,7 +429,6 @@ button {
   background: var(--light-grey);
 }
 
-
 .about-section {
   margin: 4em auto auto auto;
   padding: var(--section-pad);
@@ -464,14 +463,15 @@ button {
   font-style: normal;
 }
 
-.about-text p, ul {
+.about-text p,
+ul {
   color: var(--grey-text);
   font-size: 1em;
   line-height: 1.8;
 }
 
 .about-text ul,
-.contact-cta ul{
+.contact-cta ul {
   margin-left: 3em;
 }
 
@@ -784,7 +784,7 @@ button {
 
 .program-link:hover {
   gap: 0.6em; /* Arrow shifts right on hover */
-  color: var(--ochre-dark)
+  color: var(--ochre-dark);
 }
 
 /* ============================================================
@@ -1016,13 +1016,69 @@ button {
   color: var(--ochre-dark);
 }
 
+/*=============================================================
+  14.5? I mixed up the numbering cause I just had to add this section over here:)
+  ============================================================= */
+
+/* ---- PARTNERS SECTION ---- */
+.partners-section {
+  padding: var(--section-pad);
+  overflow: hidden; /* clips the strip so logos don't spill outside */
+}
+
+.partners-gallery {
+  display: flex;          /* lays the strip out horizontally */
+  overflow: hidden;       /* hides logos that slide off screen */
+  width: 100%;
+}
+
+.partners-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+/* The scrolling strip — contains ALL logos in a single horizontal row */
+.partners-scroll {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;         /* prevents the strip from squishing */
+  min-width: 100%;        /* each copy is at least one full screen wide */
+  animation: marquee 12s infinite linear;
+}
+
+/* Each logo box — fixed size, no margin tricks */
+.partners-logo-con {
+  display: flex;
+  flex: 0 0 auto;
+  width: 10rem;
+  padding: 0 2em;         /* space between logos, included inside the box */
+}
+
+.partners-logo-con img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.tech4dev-logo {
+  color: black;
+}
+
+/* The animation: slides left by exactly 100% of the strip's own width.
+   Because each .partners-scroll is min-width: 100% and flex-shrink: 0,
+   two copies sit side by side. Moving -100% moves exactly one copy left,
+   then it resets — perfectly seamless. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
 /* ============================================================
    15. CONTACT SECTION
    Two-column: CTA text on the left, form on the right.
    ============================================================ */
 .contact-section {
   padding: var(--section-pad);
-  background: #fff;
+  background: var(--light-grey);
 }
 
 .contact-inner {
@@ -1081,7 +1137,7 @@ button {
 
 /* Form container box */
 .contact-form-wrap {
-  background: var(--light-grey);
+  background: var(--white-text);
   border-radius: var(--radius);
   padding: 2rem;
   border: 1px solid var(--border);
@@ -1168,7 +1224,6 @@ button {
   /* If logo isn't visible on dark BG, invert it to white */
   /*filter: brightness(0) invert(1);*/
 }
-
 
 .footer-brand p {
   font-size: 0.88em;
@@ -1333,6 +1388,11 @@ button {
   color: var(--grey-text);
   font-size: 1em;
   max-width: 38em;
+}
+
+.section-tag-con {
+  display: flex;
+  justify-content: center;
 }
 
 /* Small coloured pill label */
