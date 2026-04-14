@@ -1040,7 +1040,8 @@ ul {
 .partners-scroll {
   display: flex;
   align-items: center;
-  flex-shrink: 0;         /* prevents the strip from squishing */
+  flex-shrink: 0;
+  width: fit-content;         /* prevents the strip from squishing */
   min-width: 100%;        /* each copy is at least one full screen wide */
   animation: marquee 12s infinite linear;
 }
@@ -1070,6 +1071,18 @@ ul {
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-100%); }
+}
+
+@media all and (min-width: 1024px) {
+  .partners-logo-con {
+    width: 13em;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .partners-logo-con {
+    width: 16.5em;
+  }
 }
 
 /* ============================================================
