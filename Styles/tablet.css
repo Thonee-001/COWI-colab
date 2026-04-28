@@ -352,6 +352,10 @@
     margin-right: auto;
   }
 
+  #partners-paragraph {
+    text-align: left;
+  }
+
 
   /* ---- CONTACT ---- */
   .contact-form-wrap {
