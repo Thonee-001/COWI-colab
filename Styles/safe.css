@@ -1,0 +1,43 @@
+/* ---- PARTNERS SECTION ---- */
+.partners-section {
+  padding: var(--section-pad);
+  overflow: hidden; /* clips the strip so logos don't spill outside */
+}
+
+.partners-gallery {
+  display: flex;          /* lays the strip out horizontally */
+  overflow: hidden;       /* hides logos that slide off screen */
+  width: 100%;
+}
+
+.partners-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+/* The scrolling strip — contains ALL logos in a single horizontal row */
+.partners-scroll {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: fit-content;         /* prevents the strip from squishing */
+  min-width: 100%;        /* each copy is at least one full screen wide */
+  animation: marquee 12s infinite linear;
+}
+
+/* Each logo box — fixed size, no margin tricks */
+.partners-logo-con {
+  display: flex;
+  flex: 0 0 auto;
+  width: 10rem;
+  padding: 0 2em;         /* space between logos, included inside the box */
+}
+
+.partners-logo-con img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.tech4dev-logo {
+  color: black;
+}
