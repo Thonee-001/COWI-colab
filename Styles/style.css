@@ -1430,8 +1430,8 @@ ul {
 /* The shared "Contact us" / CTA button style */
 .contact-btn {
   font-family: "Mulish", Arial, Helvetica, sans-serif;
-  background-color: var(--ochre);
-  color: navy;
+  background-color: var(--green);
+  color: var(--white-text);
   border: none;
   border-radius: 2em;
   padding: 0.7em 1.3em;
