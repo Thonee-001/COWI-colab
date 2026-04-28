@@ -5,12 +5,12 @@
    WHAT IS JAVASCRIPT?
    JavaScript makes the webpage interactive. Without it, the page
    just sits there and you can't click or interact with anything.
-   
+
    Think of it like this:
    - HTML  = the skeleton of the page (structure)
    - CSS   = the clothes/skin (appearance)
    - JS    = the muscles/brain (behaviour and interaction)
-   
+
    This file handles:
    1. Sidebar open/close (mobile navigation)
    2. Scroll-reveal animations (sections fade in as you scroll)
@@ -23,10 +23,10 @@
 
 /* ============================================================
    STEP 1: SELECT ELEMENTS FROM THE PAGE
-   
+
    document.getElementById('some-id') finds an HTML element
    by its id attribute and lets us control it with JavaScript.
-   
+
    We store them in "const" variables — const means the variable
    can't be reassigned (it always points to the same element).
    ============================================================ */
@@ -40,10 +40,10 @@ const backgroundClose = document.getElementById('background-close'); // Dim over
 
    These three functions are called directly from the HTML
    using onclick="openSidebar()" etc.
-   
+
    classList.add('class-name')    → adds a CSS class to an element
    classList.remove('class-name') → removes a CSS class
-   
+
    By adding/removing classes, we trigger CSS transitions
    (the slide-down animation is defined in tablet.css as .show-nav-bar)
    ============================================================ */
@@ -84,10 +84,10 @@ function closeSidebarBackground() {
 
 /* ============================================================
    3. SCROLL-REVEAL ANIMATION
-   
+
    We want sections to fade in from below as the user scrolls
    down to them. This is called a "scroll reveal" effect.
-   
+
    HOW IT WORKS:
    1. We add the class "reveal" to elements we want to animate
       (in CSS, .reveal has opacity: 0 and translateY(30px) — invisible)
@@ -142,22 +142,22 @@ function setupScrollReveal() {
 
 /* ============================================================
    4. ACTIVE NAV LINK HIGHLIGHTING
-   
+
    As the user scrolls, the nav link for the current section
-   should be highlighted in ochre colour.
-   
+   should be highlighted in green colour.
+
    HOW IT WORKS:
    1. We listen for the "scroll" event on the window
    2. We check which section is currently in the viewport
    3. We add "active-link" class to the matching nav link
-   
+
    scrollY = how many pixels the user has scrolled from the top
    offsetTop = how far from the top of the page an element is
    ============================================================ */
 function setupActiveNavLinks() {
   // All the sections we want to track
   const sections = document.querySelectorAll('section[id], header[id]');
-  
+
   // All nav links in both navbars
   const navLinks = document.querySelectorAll('#nav-bar a, #sc-nav-bar a');
 
@@ -191,11 +191,11 @@ function setupActiveNavLinks() {
 
 /* ============================================================
    5. ANIMATED PROGRESS BAR FILL
-   
+
    The cause cards have progress bars showing fundraising progress.
    When the section scrolls into view, the bars animate from 0%
    to their target width.
-   
+
    This uses the same IntersectionObserver pattern as above.
    ============================================================ */
 function setupProgressBars() {
@@ -233,19 +233,19 @@ function setupProgressBars() {
 
 /* ============================================================
    6. NAVBAR SCROLL BEHAVIOUR
-   
-   When the user scrolls down, add a slightly stronger shadow 
+
+   When the user scrolls down, add a slightly stronger shadow
    to the navbar so it stands out more from the content.
    ============================================================ */
 function setupNavbarScroll() {
   window.addEventListener('scroll', function() {
     if (window.scrollY > 50) {
       // User has scrolled down — make navbar background slightly less transparent
-      navbar.style.backgroundColor = 'rgba(255,255,255,0.92)';
+      //navbar.style.backgroundColor = 'rgba(255,255,255,0.92)';
       navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
     } else {
       // Back at top — restore the glass effect
-      navbar.style.backgroundColor = '';
+      //navbar.style.backgroundColor = '';
       navbar.style.boxShadow = '';
     }
   });
@@ -254,10 +254,10 @@ function setupNavbarScroll() {
 
 /* ============================================================
    7. CONTACT FORM SUBMISSION
-   
+
    When the user fills in and submits the contact form,
    we show a simple confirmation message.
-   
+
    In a real project you would send this data to a server
    (using fetch() to an API endpoint), but for now we just
    show a success message.
@@ -303,7 +303,7 @@ function submitForm() {
 
 /* ============================================================
    8. NEWSLETTER SUBSCRIPTION
-   
+
    When the user clicks "Subscribe" in the footer,
    validate their email and show a confirmation.
    ============================================================ */
@@ -334,10 +334,10 @@ function subscribeNewsletter() {
 
 /* ============================================================
    9. ALERT / TOAST NOTIFICATION HELPER
-   
-   A small temporary pop-up message that appears and 
+
+   A small temporary pop-up message that appears and
    disappears after a few seconds.
-   
+
    We create HTML elements in JavaScript:
    - document.createElement('div') creates a <div>
    - element.textContent sets the text inside
@@ -406,7 +406,7 @@ function showAlert(message, type) {
 
 /* ============================================================
    10. CLOSE SIDEBAR WHEN A LINK IS CLICKED
-   
+
    On mobile, clicking a nav link inside the sidebar should
    close the sidebar automatically (good UX).
    ============================================================ */
@@ -425,11 +425,11 @@ function setupSidebarLinkClose() {
 
 /* ============================================================
    11. INITIALISE EVERYTHING
-   
+
    We wait for the page to fully load before running our scripts.
    'DOMContentLoaded' fires when all HTML has been parsed.
-   
-   Think of it like waiting for all the furniture to arrive 
+
+   Think of it like waiting for all the furniture to arrive
    before you start decorating the room.
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function() {
