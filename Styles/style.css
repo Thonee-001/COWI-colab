@@ -806,7 +806,7 @@ ul {
 
 .team-card {
   text-align: center;
-  background: var(--light-grey);
+  background: #fffffb;
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
   border: 1px solid var(--border);
@@ -817,17 +817,17 @@ ul {
 
 .team-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 5px rgb(213, 213, 213);
 }
 
 /* Circular image container */
 .team-img-wrap {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 1rem;
-  border: 3px solid var(--green);
+  border: 2px solid var(--green);
   /* Placeholder if image missing */
   background: linear-gradient(135deg, #c0b8ad, #a09890);
 }
