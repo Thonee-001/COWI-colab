@@ -210,25 +210,23 @@
     gap: 2.5rem;
   }
 
-  .about-img {
-    height: 340px;
-  }
+  .about-img {height: 340px;}
 
-  .invert-item-a {
-    order: 4;
-  }
+  .invert-item-a {order: 2;}
 
-  .invert-item-b {
-    order: 3;
-  }
+  .invert-item-b {order: 1;}
 
-  .invert-item-c {
-    order: 8;
-  }
+  .invert-item-c {order: 3;}
 
-  .invert-item-d {
-    order: 7;
-  }
+  .invert-item-d {order: 4;}
+
+  .invert-item-e {order: 6;}
+
+  .invert-item-f {order: 5;}
+
+  .invert-item-g {order: 7;}
+
+  .invert-item-h {order: 8;}
 
   /* ---- CAUSES SECTION ---- */
   /* 3 columns → 1 column */
