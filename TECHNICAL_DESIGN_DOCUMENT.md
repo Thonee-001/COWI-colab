@@ -1,8 +1,8 @@
 # COWI Website - Technical Design Document
 
-**Version:** 1.1  
-**Date:** May 2026  
-**Repository:** [COWI-colab](https://github.com/Thonee-001/COWI-colab)  
+**Version:** 1.2
+**Date:** Aug 2026
+**Repository:** [COWI-colab](https://github.com/Thonee-001/COWI-colab)
 **Technology Stack:** HTML5, CSS3, JavaScript (Vanilla)
 
 ---
@@ -51,12 +51,13 @@ The COWI (Child Of Wealth Initiative) website is a corporate/nonprofit web prese
 | Programs/Events Gallery | Showcase COWI initiatives and upcoming events | ✅ Active |
 | Team Directory | Display team members with roles and photos | ✅ Active |
 | Partners Carousel | Scrolling display of partner organizations | ✅ Active |
-| Contact Form | Visitor inquiries and engagement | ✅ Active (static) |
+| Contact Form | Visitor inquiries and engagement | ✅ Active |
 | Contact Information | Email, phone, and location details | ✅ Active |
 | Footer Navigation | Quick links and social media | ✅ Active |
 | Scroll-Reveal Animations | Progressive content reveal on scroll | ✅ Active |
 | Newsletter Subscription | Email capture for future communications | ✅ Active (static) |
 | Error Page | Use to communicate and unreleased feature to the users |  ✅ Active |
+| Success Page | Use to communicate successful submission of form to the users |  ✅ Active |
 
 **Inactive/Commented Features:**
 - Causes/Fundraising Section
@@ -70,13 +71,15 @@ The COWI (Child Of Wealth Initiative) website is a corporate/nonprofit web prese
 ### Overall Site Structure
 
 ```
-COWI Website 
+COWI Website
 ├── index.html (Main Landing Page)
 ├── about.html (Organization Information)
 ├── error.html (Error Page)
+├── success.html (Success Message)
 └── Event_Gallery/
     ├── tel.html (Tech Empowerment Launchpad)
     ├── gesf.html (Gender Equity in STEM)
+    ├── cwdst.html (Child Wellness Drive School Tour)
     └── etic.html (Empowering the Indigent Child)
 ```
 
@@ -100,33 +103,32 @@ COWI-colab/
 ├── index.html                    # Main landing page
 ├── about.html                    # About page
 ├── error.html                    # Error/redirect page
+├── success.html                  # Success/confirmation page
 │
 ├── Styles/                       # CSS Stylesheets
 │   ├── style.css                # Main styles sheet
 │   ├── tablet.css               # Responsive overrides
-│   └── safe.css                 # Utility/safety styles (This was created when I was testing a feature)
+│   └── success.css              # Styling the success page
 │
 ├── Scripts/                      # JavaScript Files
 │   └── main.js                  # All interactive functionality
 │
 ├── Images/                       # Media Assets
-│   ├── COWI_logo.png            # Logo -png format 
-│   ├── COWI_logo.jpg            # Logo -jpg format
-│   ├── hands-together.jpg       # Hero background
-│   ├── about-children.jpg       # About section image
-│   ├── more-icon.svg            # Hamburger menu
-│   ├── close-icon.svg           # Close button
+│   ├── Logo/                    # Folder conatainnig the variants of logos used
+│   ├── Assets/                  # Folder SVG's and background images
 │   ├── Events/
 │   │   ├── TEL/                 # Folder containing the TEL program Images
 │   │   ├── GESF/                # Folder containing the Gender Equality in Stem Fields program Images
+│   │   ├── CWDST/                # Folder containing the Child Wellness Drive School Tour Images
 │   │   └── ETIC/                # Folder containing the Empowering The Indigent Child program Images
-│   ├── Team/                    # Team member photos (14 photos)
+│   ├── Team/                    # Team member photos (15 photos)
 │   └── Partners/                # Partner logos (6+ logos)
 │
 ├── Event_Gallery/               # Event pages
 │   ├── tel.html
 │   ├── gesf.html
 │   ├── etic.html
+│   ├── cwdst.html
 |   ├── gallery.css               # Styles sheet for the event gallery
 |   └── gallery.js                # Script files for the event gallery
 │
@@ -254,7 +256,7 @@ The HTML follows semantic markup principles using appropriate HTML5 tags:
 
 1. **Title Tag:** `<title>Child Of Wealth Initiative</title>` – Clear, descriptive
 
-2. **Meta Description:** 
+2. **Meta Description:**
    ```html
    <meta name="description" content="Child of Wealth Initiative is a non-profit organisation...">
    ```
@@ -471,8 +473,8 @@ The JavaScript is organized into **10 functional modules** with clear comments a
 4. **Active Navigation Links** – Highlight current section
 5. **Progress Bar Animation** – Fundraising progress bars
 6. **Navbar Scroll Behavior** – Enhance navbar on scroll
-7. **Contact Form Submission** – Form validation and submission
-8. **Newsletter Subscription** – Email capture validation
+7. **Contact Form Submission** – Form validation and submission (Currently not in use.)
+8. **Newsletter Subscription** – Email capture validation (Currently not in use.)
 9. **Alert/Toast Notifications** – User feedback system
 10. **Initialization** – Setup and event listeners
 
@@ -571,7 +573,7 @@ Detects which section is currently in viewport and highlights matching nav link:
 ```javascript
 window.addEventListener('scroll', function() {
   let currentSection = '';
-  
+
   sections.forEach(function(section) {
     if (window.scrollY >= section.offsetTop - 120) {
       currentSection = section.getAttribute('id');
@@ -597,7 +599,7 @@ The contact form validates required fields and email format:
 function submitForm() {
   const name = document.getElementById('fname');
   const email = document.getElementById('femail');
-  
+
   // Check for empty fields
   if (!name.value.trim() || !email.value.trim()) {
     showAlert('Please fill in all required fields.', 'error');
@@ -613,7 +615,7 @@ function submitForm() {
 
   // Show success message
   showAlert('Thank you! Your message has been sent.', 'success');
-  
+
   // Clear form fields
   name.value = '';
   email.value = '';
@@ -630,7 +632,7 @@ Creates temporary pop-up messages:
 function showAlert(message, type) {
   const alert = document.createElement('div');
   alert.textContent = message;
-  
+
   Object.assign(alert.style, {
     position: 'fixed',
     bottom: '2rem',
@@ -639,9 +641,9 @@ function showAlert(message, type) {
     opacity: '0',
     transition: 'opacity 0.4s ease'
   });
-  
+
   document.body.appendChild(alert);
-  
+
   setTimeout(() => {
     alert.style.opacity = '1';
   }, 50);
@@ -999,9 +1001,9 @@ img {
 
 ### Current Hosting
 
-**Platform:** Netlify  
-**Domain:** https://cowi.netlify.app  
-**Type:** Static site hosting  
+**Platform:** Netlify
+**Domain:** https://cowi.netlify.app
+**Type:** Static site hosting
 **Build Process:** Direct file deployment (no build step required)
 
 ### Deployment Workflow
@@ -1164,7 +1166,7 @@ FORM_SUBMISSION_ENDPOINT=<endpoint>
 1. **Code Organization**
    ```javascript
    /* Current: Single main.js file (15 KB)
-      
+
       Future: Module-based structure
       Scripts/
       ├── main.js (initialization)
@@ -1242,24 +1244,23 @@ The COWI website is a well-structured, responsive, and accessible nonprofit webs
 
 ### Key Strengths
 
-✅ **Performance:** Fast load times, minimal dependencies  
-✅ **Accessibility:** Semantic HTML, ARIA roles, alt text  
-✅ **Responsive:** Mobile-first design, fluid typography  
-✅ **SEO-Friendly:** Proper meta tags, structure, schema  
-✅ **User Experience:** Smooth animations, intuitive navigation  
-✅ **Maintainability:** Clear code organization, helpful comments  
+✅ **Performance:** Fast load times, minimal dependencies
+✅ **Accessibility:** Semantic HTML, ARIA roles, alt text
+✅ **Responsive:** Mobile-first design, fluid typography
+✅ **SEO-Friendly:** Proper meta tags, structure, schema
+✅ **User Experience:** Smooth animations, intuitive navigation
+✅ **Maintainability:** Clear code organization, helpful comments
 
 ### Recommended Next Steps
 
-1. Implement backend for form submissions
-2. Add image optimization and lazy loading
-3. Set up analytics and monitoring
-4. Create content management workflow
-5. Plan SEO strategy and content calendar
+1. Add image optimization and lazy loading
+2. Set up analytics and monitoring
+3. Create content management workflow
+4. Plan SEO strategy and content calendar
 
 ---
 
-**Document Version:** 1.1  
-**Last Updated:** May 6, 2026  
-**Created by:** [Anthony Ijang](https://anthonyi.netlify.app) and Copilot (_his assistant_) on behalf of COWI Web Development Team  
+**Document Version:** 1.2
+**Last Updated:** Aug 30, 2026
+**Created by:** [Anthony Ijang](https://anthonyi.netlify.app) and Copilot (_his assistant_) on behalf of COWI Web Development Team
 **Repository:** [Thonee-001/COWI-colab](https://github.com/Thonee-001/COWI-colab)
