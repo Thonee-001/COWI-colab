@@ -1263,8 +1263,8 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.7);
@@ -1275,10 +1275,15 @@ ul {
     color var(--transition);
 }
 
-.footer-socials a:hover {
+/* .footer-socials a:hover {
   background: var(--green);
   border-color: var(--white-text);
   color: #fff;
+} */
+
+.footer-socials a:hover {
+  background: var(--green-dark);
+  transform: scale(1.1);
 }
 
 /* Columns 2 & 3: link lists */
