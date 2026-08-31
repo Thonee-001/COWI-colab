@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.className = "modal";
   modal.innerHTML = `
         <span class="modal-close" title="Close (Esc)">&times;</span>
-        <button class="modal-btn modal-prev" aria-label="Previous">&lt;</button>
+        <button class="modal-btn modal-prev" aria-label="Previous"><img src="../Images/Assets/left-arrow.svg"></button>
         <div class="modal-content-wrapper">
             <img id="modal-image" src="" alt="Gallery Preview">
         </div>
-        <button class="modal-btn modal-next" aria-label="Next">&gt;</button>
+        <button class="modal-btn modal-next" aria-label="Next"><img src="../Images/Assets/right-arrow.svg"></button>
     `;
   document.body.appendChild(modal);
 

@@ -179,7 +179,7 @@ body {
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 2000;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
@@ -234,19 +234,20 @@ body {
 }
 
 .modal-close:hover {
-  color: var(--ochre);
+  color: var(--green-light);
   transform: rotate(90deg);
 }
 
 .modal-btn {
   position: absolute;
   top: 50%;
+  z-index: 25;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.05);
   color: white;
   border: none;
   font-size: 2rem;
-  padding: 20px 25px;
+  padding: 20px 20px;
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -257,7 +258,7 @@ body {
 }
 
 .modal-btn:hover {
-  background: var(--ochre);
+  background: var(--green-light);
   color: white;
 }
 
@@ -265,13 +266,21 @@ body {
 .modal-next { right: 40px; }
 
 /* Mobile Responsiveness for Modal */
-@media (max-width: 768px) {
+@media (max-width: 1153px) {
   .modal-btn {
-    padding: 10px 15px;
+    padding: 10px 10px;
     font-size: 1.5rem;
     background: rgba(0,0,0,0.3);
   }
   .modal-prev { left: 10px; }
   .modal-next { right: 10px; }
   .modal-close { right: 20px; top: 20px; font-size: 35px; }
+}
+
+@media (max-width: 616px){
+  .modal-btn {
+    padding: 7px 7px;
+    font-size: 1.2rem;
+  }
+  
 }
