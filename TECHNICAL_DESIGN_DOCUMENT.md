@@ -1011,14 +1011,16 @@ img {
 1. **Repository Setup:**
    - GitHub repository at `Thonee-001/COWI-colab`
    - Main branch contains production code
-   - Owner of Repo, pushes the main branch to Netlify for deployment
+   - Main branch is linked to Netlify for **automatic** deployment
 
 2. **Deployment Steps:**
    _Might change in the future_
-   - Push code to `main` branch
+   - Push code to `secondary` branch (live at https://cowitest.netlify.app)
    - Owner detects changes
-   - Uses Netlify to rebuild and deploy (typically <5 minutes)
+   - Merges with `main`
+   - Netlify Automatic rebuild and deploy
    - New version live at https://cowi.netlify.app
+   - **Important** make changes only to a newly created branch specific to that fix/feature or the secondary branch.
 
 3. **Pre-Deployment Checklist:**
    - [ ] Code tested locally
