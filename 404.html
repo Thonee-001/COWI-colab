@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 - Page not found for Child Of Wealth Initiative">
+  <meta http-equiv="refresh" content="5; url=./index.html">
+  <link rel="icon" href="./Images/Logo/COWI_logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./Event_Gallery/gallery.css">
+  <title>404 | Child Of Wealth Initiative</title>
+</head>
+<body class="page-404-body">
+  <div class="error-scene">
+    <div class="error-visual" aria-hidden="true">
+      <div class="orb orb-one"></div>
+      <div class="orb orb-two"></div>
+      <svg class="error-illustration" viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Child empowerment illustration">
+        <defs>
+          <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6fcf73"/>
+            <stop offset="100%" stop-color="#0a7d39"/>
+          </linearGradient>
+        </defs>
+        <circle cx="92" cy="118" r="28" fill="#f7d9a9"/>
+        <path d="M105 140c-16 18-25 42-25 65 0 44 29 78 72 99 28-10 53-25 73-45 19-19 32-41 39-66-44-24-100-31-159-53Z" fill="#d8f0d5"/>
+        <path d="M118 124c35-57 116-86 196-64 37 11 60 27 78 54-44-8-86-3-129 16-42 18-73 45-97 82-24-27-37-52-48-88Z" fill="#bfe7c1"/>
+        <path d="M190 148c-31 0-58 18-70 47-12 28-7 60 21 81 18 13 41 18 68 18 19 0 39-3 58-12-23-7-47-22-68-42-23-21-39-48-43-80 17-12 25-12 34-12Z" fill="#ffffff" opacity="0.82"/>
+        <path d="M242 106c22 24 35 52 37 84 2 34-7 64-29 93 30-2 60-15 85-38 29-27 40-61 38-98-24-21-53-33-86-41l-45 0Z" fill="url(#leafGrad)"/>
+        <path d="M286 113c-5 22-26 42-45 58-17 15-34 25-56 34 24 8 54 7 81-9 30-18 45-46 48-83-10 0-19 0-28 0Z" fill="#dff4e3" opacity="0.6"/>
+        <path d="M137 325h234c14 0 27 11 27 25v7H110v-7c0-14 13-25 27-25Z" fill="#1d5b2d"/>
+        <path d="M208 210l63 63 51-58 39 47-90 103-89-110 26-45Z" fill="#0f7b3c" opacity="0.84"/>
+        <path d="M210 210l63 63 51-58 39 47-90 103-89-110 26-45Z" fill="none" stroke="#0a5f2d" stroke-width="8" stroke-linejoin="round"/>
+        <circle cx="150" cy="205" r="26" fill="#f7d9a9"/>
+        <path d="M173 225c18-30 58-40 94-21-15 26-42 42-79 44-15 1-25-5-15-23Z" fill="#f7d9a9"/>
+        <circle cx="306" cy="190" r="24" fill="#f7d9a9"/>
+        <path d="M295 202c21-16 51-16 76 4-7 29-30 48-59 52-17 2-28-10-17-28Z" fill="#f7d9a9"/>
+      </svg>
+    </div>
+
+    <div class="error-content">
+      <img src="./Images/Logo/logoVariant-2.png" alt="COWI Logo" class="error-logo">
+      <p class="error-tag">404 Error</p>
+      <h1>Page not found</h1>
+      <p class="error-message">
+        The page you’re looking for may have moved, been removed, or never existed.
+      </p>
+
+      <div class="error-actions">
+        <a class="back-home-btn" href="./index.html">
+          <button type="button">Back to homepage</button>
+        </a>
+      </div>
+
+      <p class="redirect-note">Redirecting to the homepage in <span id="countdown">5</span> seconds...</p>
+    </div>
+  </div>
+
+  <script>
+    const countdown = document.getElementById('countdown');
+    let timeLeft = 5;
+
+    const timer = setInterval(() => {
+      timeLeft -= 1;
+      if (countdown) {
+        countdown.textContent = timeLeft;
+      }
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = './index.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
