@@ -1149,10 +1149,10 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(210, 115, 21, 0.1);
+  /* background: rgba(210, 115, 21, 0.1); */
   font-size: 1em;
   flex-shrink: 0;
 }
@@ -1523,6 +1523,7 @@ ul {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* ============================================================
    18. LARGE SCREEN OVERRIDES
